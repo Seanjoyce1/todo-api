@@ -23,3 +23,9 @@ This is a simple Todo List application built with Node.js and Express.
    git clone https://github.com/your-username/todo-list-app.git
    cd todo-list-app
    ```
+
+2. Running the application
+
+```
+npx nodemon app.js
+```
