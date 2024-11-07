@@ -35,9 +35,9 @@ app.get("/api/tasks", async (req, res) => {
 
 // Create a new task
 app.post("/api/tasks", async (req, res) => {
-  const { title, completed } = req.body
+  const { title, description, completed } = req.body
   try {
-    const newTask = await Task.create({ title, completed })
+    const newTask = await Task.create({ title, description, completed })
 
     res.status(201).json(newTask) // Respond with the created task
   } catch (err) {
@@ -45,12 +45,12 @@ app.post("/api/tasks", async (req, res) => {
   }
 })
 
-// Mark task as complete
+// Update task properties
 app.put("/api/tasks/:id", async (req, res) => {
   try {
     const updatedTask = await Task.findByIdAndUpdate(
       req.params.id,
-      { completed: true },
+      req.body,
       { new: true } // Return the updated document
     )
     if (!updatedTask) {

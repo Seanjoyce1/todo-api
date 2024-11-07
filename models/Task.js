@@ -9,6 +9,11 @@ const taskSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  description: {
+    type: String,
+    default: "",
+  },
+  createdAt: { type: Date, default: Date.now },
 })
 
 taskSchema.set("toJSON", {
